@@ -14,6 +14,10 @@ import sys
 import tarfile
 import shutil
 import glob
+import matplotlib
+import scipy
+import pandas as pd
+import numpy as np
 from urllib.request import urlretrieve
 
 
@@ -55,7 +59,7 @@ def move_bundles(source, dest):
         dst = os.path.join(dest, f)
         if os.path.exists(dst):
             print(
-                "Skipping bundle. The bundle includes '%s' which we have previously deployed."
+                "Skipping bundle. The bundle includes '%s' which has been previously deployed."
                 % f
             )
         else:
@@ -169,7 +173,7 @@ class Deployer:
         sys.stdout.write("Downloading %s -> %s..." % (url, local_filename))
         sys.stdout.flush()
         urlretrieve(url, local_filename)
-        print ("Done")
+        print ("Mission accomplished.")
         return local_filename
 
 
